@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About LifeSaver</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background-color: #ffe6e6;
+            padding: 60px 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .hero-section h1 {
+            font-weight: 700;
+            color: #ff4d4d;
+            margin-bottom: 15px;
+        }
+        .hero-section p {
+            font-size: 1.2rem;
+            color: #333;
+        }
+        .mission-card {
+            border-radius: 12px;
+            padding: 25px;
+            background-color: #f8f9fa;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
+        }
+        .mission-card:hover {
+            transform: translateY(-5px);
+        }
+        .mission-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #ff4d4d;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold mx-auto" href="#">About LifeSaver</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item mx-2"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="/post/">Add Post</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="/help/">Help</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<div class="container my-5">
+    <div class="hero-section">
+        <h1> Every Drop Saves a Life</h1>
+        <p>
+            <b>LifeSaver</b> is a platform designed to connect patients in urgent need of blood with compassionate donors. 
+            Each post represents a real person looking for help, and every response can save a life.
+        </p>
+    </div>
+</div>
+
+<!-- Mission Section -->
+<div class="container my-5">
+    <h2 class="text-center text-danger mb-4">Our Mission</h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="mission-card text-center">
+                <div class="mission-icon">🩸</div>
+                <h5>Accessible Requests</h5>
+                <p>Provide a simple platform for posting and viewing blood donation requests.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="mission-card text-center">
+                <div class="mission-icon">🤝</div>
+                <h5>Community Support</h5>
+                <p>Promote volunteerism and help people in need efficiently and safely.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="mission-card text-center">
+                <div class="mission-icon">⏱️</div>
+                <h5>Fast Connections</h5>
+                <p>Ensure urgent requests reach willing donors quickly to save lives.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="text-center text-muted py-4 mt-5">
+    <hr>
+    <p>
+        LifeSaver © 2025 · Built to help save lives 🩸 <br>
+        <small>Not a hospital · Contact donors directly</small>
+    </p>
+</footer>
+</body>
+</html>

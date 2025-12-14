@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Blood Donation Post</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .form-card {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .btn-danger:hover {
+            background-color: #ff3333;
+            border-color: #ff3333;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: #f1ebeb;
+            text-shadow: 1px 1px 2px #000;
+        }
+        footer p small {
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold mx-auto" href="#">LifeSaver</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item mx-2"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="/help/">Help</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="/about/">About</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Form Section -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="form-card">
+                <h3 class="text-center mb-4">Add Blood Donation Post</h3>
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    <!-- Name -->
+                    <div class="mb-3">
+                        {{ form.name.label_tag }}
+                        <input type="text" name="name" value="{{ form.name.value }}" class="form-control" placeholder="Enter full name" required>
+                    </div>
+
+                    <!-- Blood Type (Dropdown) -->
+                    <div class="mb-3">
+                        {{ form.blood_type.label_tag }}
+                        <select name="blood_type" class="form-control" required>
+                            <option value="">Select Blood Type</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </div>
+
+                    <!-- City -->
+                    <div class="mb-3">
+                        {{ form.city.label_tag }}
+                        <input type="text" name="city" value="{{ form.city.value }}" class="form-control" placeholder="Enter your city" required>
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="mb-3">
+                        {{ form.contact.label_tag }}
+                        <input type="text" name="contact" value="{{ form.contact.value }}" class="form-control" placeholder="Enter phone number" required>
+                        <small class="text-muted">Include area code for faster contact</small>
+                    </div>
+
+                    <!-- Message (optional) -->
+                    <div class="mb-3">
+                        {{ form.message.label_tag }}
+                        <textarea name="message" class="form-control" placeholder="Any additional details..." rows="3"></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-danger btn-lg mt-3">Submit Post</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-center text-muted py-4 mt-5">
+    <hr>
+    <p>
+        LifeSaver © 2025 · Built to help save lives 🩸 <br>
+        <small>Not a hospital · Contact donors directly</small>
+    </p>
+</footer>
+
+</body>
+</html>
+
+
+
+

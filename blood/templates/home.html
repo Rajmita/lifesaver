@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LifeSaver - Blood Donation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold mx-auto" href="/"> LifeSaver</a>
+
+    <!-- Mobile Toggle -->
+    <button class="navbar-toggler" type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item mx-2"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="/post/">Add Post</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="/help/">Help</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="/about/">About</a></li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<div class="container mt-4">
+    <div div class="bg-danger text-white text-center p-4 rounded shadow-sm mb-4"> 
+        <h1 class="fw-bold ">Donate Blood, Save Lives!</h1>
+        <p class="lead mb-3">
+            A simple platform connecting blood donors with people in urgent need.
+        </p>
+        <a href="/post/" class="btn btn-outline-light btn-lg">
+    Need Blood? Request Help
+        </a>
+        </div>
+    </div>
+
+    <!-- SEARCH -->
+    <form method="get" class="mb-4">
+        <input type="text" name="q"
+            placeholder="🔍 Search by blood type or city"
+            value="{{ query }}"
+            class="form-control form-control-lg">
+    </form>
+
+    <!-- POSTS -->
+    <div class="row">
+    {% for p in posts %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm {% if p.urgent %}border-danger{% endif %}">
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="fw-bold text-danger">
+                            🩸 {{ p.blood_type }}
+                        </h5>
+
+                        {% if p.urgent %}
+                            <span class="badge bg-danger">URGENT</span>
+                        {% endif %}
+                    </div>
+
+                    <p class="mb-1"><strong>Name:</strong> {{ p.name }}</p>
+
+                    <p class="mb-1">
+                        <strong>City:</strong>
+                        <a href="https://www.google.com/maps/search/{{ p.city }}"
+                           target="_blank">
+                           📍 {{ p.city }}
+                        </a>
+                    </p>
+
+                    <p class="small text-muted">
+                        {{ p.message }}
+                    </p>
+
+                    {% if p.contact %}
+                        <span class="badge bg-success mb-2">Verified Contact</span>
+                    {% endif %}
+
+                    <div class="d-flex gap-2 mt-2">
+                        <a href="tel:{{ p.contact }}" class="btn btn-success btn-sm">
+                            📞 Call
+                        </a>
+
+                        <button class="btn btn-outline-secondary btn-sm"
+                            onclick="copyContact('{{ p.contact }}')">
+                            📋 Copy
+                        </button>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <small class="text-muted">
+                            Posted on {{ p.created_at }}
+                        </small>
+
+                        <a href="{% url 'delete_post' p.id %}"
+                           class="btn btn-sm btn-outline-danger"
+                           onclick="return confirm('Are you sure you want to delete this post?');">
+                           Delete
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p class="text-center text-muted">No posts found.</p>
+    {% endfor %}
+    </div>
+</div>
+
+<!-- Why it is trustworthy? -->
+
+<div class="container my-5 text-center">
+    <h5 class="text-danger mb-3">Why Trust LifeSaver?</h5>
+
+    <p class="text-muted">
+        LifeSaver does not store sensitive medical records.
+        All communication happens directly between donors and requesters.
+    </p>
+
+    <p class="text-muted small">
+        This platform is built to assist during emergencies
+        and does not replace hospitals or blood banks.
+    </p>
+</div>
+
+
+<!-- FOOTER -->
+<footer class="text-center text-muted py-4 mt-5">
+    <hr>
+    <p>
+        LifeSaver © 2025 · Built to help save lives 🩸 <br>
+        <small>Not a hospital · Contact donors directly</small>
+    </p>
+</footer>
+
+<script>
+function copyContact(contact) {
+    navigator.clipboard.writeText(contact).then(() => {
+        alert("Contact copied: " + contact);
+    });
+}
+</script>
+
+</body>
+</html>
+
